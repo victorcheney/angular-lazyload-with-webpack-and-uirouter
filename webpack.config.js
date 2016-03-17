@@ -14,7 +14,7 @@ var cdnpath = '';
 var plugins = [
     new webpack.optimize.CommonsChunkPlugin('vendors', 'scripts/vendors.js'),
     //将样式统一发布到style.css中
-    new ExtractTextPlugin("styles/build.css", {
+    new ExtractTextPlugin("css/build.css", {
         allChunks: true,
         disable: false
     }),
