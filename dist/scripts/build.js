@@ -18,6 +18,7 @@ webpackJsonp([0],[
 	__webpack_require__(5);
 	__webpack_require__(6);
 	__webpack_require__(8);
+	//定义主模块，配置相关路由
 	angular.module('app', ['ngAnimate', __webpack_require__(9), __webpack_require__(10)])
 	    .config(["$stateProvider", "$locationProvider", "$urlRouterProvider", function($stateProvider, $locationProvider, $urlRouterProvider) {
 	        $urlRouterProvider.otherwise("/");
