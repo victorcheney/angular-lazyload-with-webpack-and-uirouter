@@ -1,0 +1,1 @@
+webpackJsonp([1],{8:function(n,o,f){(function(o){f(9),n.exports=angular.module("app.main",[]).controller("MainController",["$scope",function(n){o("span.pie").peity("pie",{fill:["#1ab394","#d7d7d7","#ffffff"]}),n.title="主页"}])}).call(o,f(1))},9:function(n,o){}});
