@@ -4,7 +4,7 @@ angular lazyload with webpack and ui-router
 > 集成了angular webpack ui-router oclazyload H+ 等实现的一个页面懒加载的angular项目脚手架。
 
 ## 在线预览
-[预览地址](http://wandergis.com/angular-lazyload-with-webpack-and-uirouter/dist/)
+[预览地址](http://wandergis.com/angular-lazyload-with-webpack-and-uirouter/dist/#/login)
 
 ## 相关功能
 - 懒加载
