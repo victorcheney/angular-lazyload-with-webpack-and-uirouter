@@ -6,6 +6,9 @@ angular lazyload with webpack and ui-router
 ## 在线预览
 [预览地址](http://wandergis.com/angular-lazyload-with-webpack-and-uirouter/dist/#/login)
 
+    用户名：admin
+    密码：admin
+
 ## 相关功能
 - 懒加载
 - 实时预览调试
@@ -13,6 +16,7 @@ angular lazyload with webpack and ui-router
 - 打包压缩
 - cdn资源替换
 - 代理转发
+- 简单auth验证逻辑
 
 ## 源码目录结构
     .
