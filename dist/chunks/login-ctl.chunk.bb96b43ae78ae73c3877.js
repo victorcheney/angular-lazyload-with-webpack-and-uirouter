@@ -1,1 +1,0 @@
-webpackJsonp([2],{7:function(o,n){o.exports=angular.module("app.login",[]).controller("LoginController",["$scope",function(o){o.title="登录页面"}])}});

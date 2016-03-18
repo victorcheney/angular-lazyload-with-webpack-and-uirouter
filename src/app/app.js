@@ -8,9 +8,10 @@ require('../css/style.css');
 require('../vendors/bootstrap.min.js');
 require('../vendors/jquery.peity.min.js');
 //定义主模块，配置相关路由
-angular.module('app', ['ngAnimate', require('angular-ui-router'), require('oclazyload')])
-    .config(function($stateProvider, $locationProvider, $urlRouterProvider) {
-        $urlRouterProvider.otherwise("/");
+angular.module('app', ['ngAnimate', require('angular-ui-router'), require('oclazyload'), require('angular-local-storage'), require('./services/tokenInterceptor'), require('./services/loginService')])
+    .config(function($httpProvider, $stateProvider, $locationProvider, $urlRouterProvider) {
+        $httpProvider.interceptors.push('tokenInterceptor');
+        $urlRouterProvider.otherwise("/login");
         $stateProvider
         //404路由配置
             .state('404', {
@@ -26,7 +27,7 @@ angular.module('app', ['ngAnimate', require('angular-ui-router'), require('oclaz
             })
             //主页路由
             .state('main', {
-                url: '/',
+                url: '/main',
                 templateProvider: function($q) {
                     var deferred = $q.defer();
                     require.ensure(['./views/main/main.html'], function(require) {
@@ -48,7 +49,8 @@ angular.module('app', ['ngAnimate', require('angular-ui-router'), require('oclaz
                         }, 'main-ctl');
                         return deferred.promise;
                     }
-                }
+                },
+                access: { requiredLogin: true }
             })
             //登录路由
             .state('login', {
@@ -78,5 +80,13 @@ angular.module('app', ['ngAnimate', require('angular-ui-router'), require('oclaz
             })
             // var isHistoryApi = !!(window.history && history.pushState); //判断浏览器是否支持html5的history
             // if (isHistoryApi && location.protocol !== 'file:') { $locationProvider.html5Mode(true); }
-
+    })
+    .run(function($rootScope, $state, $location, localStorageService, AuthenticationService) {
+        $rootScope.$on('$stateChangeStart',
+            function(event, toState, toParams, fromState, fromParams, options) {
+                if (toState.access && toState.access.requiredLogin && !localStorageService.get('token')) {
+                    event.preventDefault(); //很重要，http://stackoverflow.com/questions/22537311/angular-ui-router-login-authentication
+                    $state.go('login');
+                }
+            });
     });
