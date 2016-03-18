@@ -10,9 +10,21 @@ require('../vendors/jquery.peity.min.js');
 //定义主模块，配置相关路由
 angular.module('app', ['ngAnimate', require('angular-ui-router'), require('oclazyload')])
     .config(function($stateProvider, $locationProvider, $urlRouterProvider) {
-        $urlRouterProvider.otherwise("/");
+        $urlRouterProvider.otherwise("/404");
         $stateProvider
-        //主页路由
+        //404路由配置
+            .state('404', {
+                url: '/404',
+                templateProvider: function($q) {
+                    var deferred = $q.defer();
+                    require.ensure(['../404.html'], function(require) {
+                        var template = require('../404.html');
+                        deferred.resolve(template);
+                    }, '404-tpl');
+                    return deferred.promise;
+                }
+            })
+            //主页路由
             .state('main', {
                 url: '/',
                 templateProvider: function($q) {
