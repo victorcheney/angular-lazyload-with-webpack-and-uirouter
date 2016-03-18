@@ -7,6 +7,7 @@ require('../css/font-awesome.css');
 require('../css/style.css');
 require('../vendors/bootstrap.min.js');
 require('../vendors/jquery.peity.min.js');
+//定义主模块，配置相关路由
 angular.module('app', ['ngAnimate', require('angular-ui-router'), require('oclazyload')])
     .config(function($stateProvider, $locationProvider, $urlRouterProvider) {
         $urlRouterProvider.otherwise("/");
