@@ -10,7 +10,7 @@ require('../vendors/jquery.peity.min.js');
 //定义主模块，配置相关路由
 angular.module('app', ['ngAnimate', require('angular-ui-router'), require('oclazyload')])
     .config(function($stateProvider, $locationProvider, $urlRouterProvider) {
-        $urlRouterProvider.otherwise("/404");
+        $urlRouterProvider.otherwise("/");
         $stateProvider
         //404路由配置
             .state('404', {
