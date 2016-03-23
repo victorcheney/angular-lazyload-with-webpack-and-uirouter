@@ -10,7 +10,9 @@ module.exports = angular.module('app.main', [])
         error(function(data, status, headers, config) {
 
         });
+        //退出
         $scope.logout = function() {
+            //清空登录信息
             AuthenticationService.isLogged = false;
             localStorageService.set('token', null);
             $state.go('login');
